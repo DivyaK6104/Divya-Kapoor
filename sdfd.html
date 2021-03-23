@@ -217,36 +217,36 @@ library(caTools)</code></pre>
 <pre><code>## Warning: package &#39;caTools&#39; was built under R version 4.0.4</code></pre>
 <pre class="r"><code>s.d &lt;- sample.split(S_data$Scores,SplitRatio = 0.2)
 s.d</code></pre>
-<pre><code>##  [1] FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE
-## [13] FALSE FALSE  TRUE FALSE FALSE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE
+<pre><code>##  [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE
+## [13] FALSE FALSE FALSE  TRUE  TRUE FALSE  TRUE FALSE  TRUE FALSE FALSE FALSE
 ## [25] FALSE</code></pre>
 <pre class="r"><code>train&lt;- subset(S_data,s.d == TRUE)
 test &lt;- subset(S_data,s.d == FALSE)
 train</code></pre>
 <pre><code>##    Hours Scores
-## 5    3.5     30
-## 11   7.7     85
-## 15   1.1     17
-## 18   1.9     24
-## 19   6.1     67</code></pre>
+## 12   5.9     62
+## 16   8.9     95
+## 17   2.5     30
+## 19   6.1     67
+## 21   2.7     30</code></pre>
 <pre class="r"><code>test</code></pre>
 <pre><code>##    Hours Scores
 ## 1    2.5     21
 ## 2    5.1     47
 ## 3    3.2     27
 ## 4    8.5     75
+## 5    3.5     30
 ## 6    1.5     20
 ## 7    9.2     88
 ## 8    5.5     60
 ## 9    8.3     81
 ## 10   2.7     25
-## 12   5.9     62
+## 11   7.7     85
 ## 13   4.5     41
 ## 14   3.3     42
-## 16   8.9     95
-## 17   2.5     30
+## 15   1.1     17
+## 18   1.9     24
 ## 20   7.4     69
-## 21   2.7     30
 ## 22   4.8     54
 ## 23   3.8     35
 ## 24   6.9     76
@@ -259,11 +259,11 @@ ypred &lt;- coef(data)[1]+coef(data)[2]*c(train$Hours)
 c&lt;- data.frame(yobs,ypred)
 c</code></pre>
 <pre><code>##   yobs    ypred
-## 1   30 36.69899
-## 2   85 77.75736
-## 3   17 13.23706
-## 4   24 21.05770
-## 5   67 62.11607</code></pre>
+## 1   62 60.16091
+## 2   95 89.48832
+## 3   30 26.92318
+## 4   67 62.11607
+## 5   30 28.87834</code></pre>
 <pre class="r"><code>yVAL &lt;- coef(data)[1]+coef(data)[2]*9.25
 yVAL</code></pre>
 <pre><code>## (Intercept) 

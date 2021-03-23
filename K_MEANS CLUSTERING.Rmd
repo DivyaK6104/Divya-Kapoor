@@ -1,0 +1,34 @@
+---
+title: "DIVYA KAPOOR"
+author: "GRIP Sparks Foundation"
+date: "3/23/2021"
+output: html_document
+---
+
+```{r}
+#first we extract the data
+data("iris")
+iris
+iris1 <- iris[,1:4]
+iris2 <- head(iris1,5)
+iris2
+install.packages("factoextra")
+library(factoextra)
+val<- get_dist(iris2)
+fviz_dist(val,gradient = list(low = "red",mid = "blue",high = "green"))
+#it gives gradient visualization of data
+set.seed(123)
+wss <- function(k){
+  kmeans(iris1,k,iter.max= 300,nstart = 10)$tot.withinss
+}
+k.values <- 1:15
+library(purrr)
+wss_val <- map_dbl(k.values,wss)
+plot(k.values,wss_val, type = "l",pch = 19, frame = FALSE , xlab = "Number of clusters K", ylab = "Total within - clusters sum of squares")
+#number of clusters are 3
+n<- kmeans(iris1,centers = 3 ,iter.max = 300,nstart = 10)
+str(n)
+fviz_cluster(n,data = iris1,ellipse.type = "norm")
+
+```
+
